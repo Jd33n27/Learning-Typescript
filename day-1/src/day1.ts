@@ -80,11 +80,28 @@ console.log(taxResult);
 */
 
 //#########  OBJECTS  #########
-let employee: {
-  readonly id: number; // readonly modifier makes it impossible to change the value something after initialization
+// let employee: {
+//   readonly id: number; // readonly modifier makes it impossible to change the value something after initialization
+//   name: string;
+//   retire: (date: Date) => void; // retire is a method that takes in a date and returns nothing
+// } = {
+//   id: 1,
+//   name: "Musa",
+//   retire: (date: Date) => {
+//     console.log(date);
+//   },
+// };
+
+//#########  ADVANCED TYPES  #########
+
+//######### TYPE ALIASS #########
+/* type Employee = {
+  readonly id: number;
   name: string;
-  retire: (date: Date) => void; // retire is a method that takes in a date and returns nothing
-} = {
+  retire: (date: Date) => void;
+};
+
+let employee: Employee = {
   id: 1,
   name: "Musa",
   retire: (date: Date) => {
@@ -92,5 +109,70 @@ let employee: {
   },
 };
 
+const employee1 = employee;
+console.log(employee1); */
 
-//#########  ADVANCED TYPES  #########
+//######### UNION TYPES #########
+
+/* function kgToLbs(weight: number | string): number {
+  if (typeof weight === "number") {
+    return weight * 2.2;
+  } else return parseInt(weight) * 2.2;
+}
+
+const kgToLbsNumber: number = kgToLbs(10);
+console.log(kgToLbsNumber);
+
+const kgToLbsString: number = kgToLbs("10kg");
+console.log(kgToLbsString);
+
+//######### INTERSECTION TYPES #########
+type Draggable = {
+  drag: () => void;
+};
+
+type Resizable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizable; //Intersect type right here man
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
+}; */
+
+//######### LITERAL TYPES #########
+//Literal meaning exact or specific soo....
+/* let quantity: number = 50; */ //so instead of this
+// we do this
+/* let quantity: 50 = 50; */ // to make this better we can do this
+// type Quantity = 50 | 100; //union type
+// let quantity: Quantity = 50;
+
+//######### NULLABLE TYPES #########
+/* function greet(name: string | null | undefined) { // you need to define the null or undefined value as a type before it compiles
+  if (name) console.log(`Good day ${name.toLocaleUpperCase()}`);
+  else console.log("Hola!");
+}
+
+greet(undefined); */
+
+//######### INTERFACES #########
+interface User {
+  name: string;
+  age: number;
+}
+
+const user1: User = {
+  name: "Jamal",
+  age: 28,
+};
+
+function displayUser(user: User) {
+  console.log(
+    `User's name is ${user.name} and he/she is ${user.age} years old`
+  );
+}
+
+displayUser(user1);
