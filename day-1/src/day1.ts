@@ -68,7 +68,7 @@ function calculateTax(income: number): number {// function with return type decl
     return 0
 }
 */
-
+/**
 function calculateTax(income: number, taxYear: number): number {
   // function with return type declared, leaving it to the compiler
   if (taxYear < 2025) return income * 1.2;
@@ -77,3 +77,20 @@ function calculateTax(income: number, taxYear: number): number {
 
 const taxResult: number = calculateTax(10_000, 2024);
 console.log(taxResult); 
+*/
+
+//#########  OBJECTS  #########
+let employee: {
+  readonly id: number; // readonly modifier makes it impossible to change the value something after initialization
+  name: string;
+  retire: (date: Date) => void; // retire is a method that takes in a date and returns nothing
+} = {
+  id: 1,
+  name: "Musa",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+
+
+//#########  ADVANCED TYPES  #########
