@@ -159,6 +159,7 @@ let textBox: UIWidget = {
 greet(undefined); */
 
 //######### INTERFACES #########
+// DAY 1 CHALLENGE IS DONE 🤧✅
 interface User {
   name: string;
   age: number;
