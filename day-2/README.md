@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# Simple Counter App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and interactive counter application built with **React**, **TypeScript**, and **Vite**. This project demonstrates a clean component-based architecture with state management and modular styling.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Counter**: Easily increase or decrease the count using the provided buttons.
+- **State Management**: Uses React's `useState` and `useEffect` hooks to manage and monitor the counter state.
+- **Console Logging**: Tracks state changes (increments/decrements) in the browser console for debugging purposes.
+- **Modular Components**: Built with reusable `Button` and `Display` components.
+- **Styled with CSS Modules**: Ensures scoped and conflict-free styling for components.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: CSS Modules
 
-## Expanding the ESLint configuration
+### Usage in App.tsx
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The `App` component serves as the central logic hub. It initializes the counter state and defines the `increase` and `decrease` functions. These functions are passed as callbacks to the `Button` components, while the current `count` is passed to the `Display` component. A `useEffect` hook observes changes in `count`, comparing it with a `useRef` value to log whether the counter was increased or decreased.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  **Clone the repository:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```bash
+    git clone <repository-url>
+    cd <project-directory>
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Install dependencies:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    This project uses `pnpm`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+    ```bash
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    pnpm dev
+    ```
+
+4.  Open your browser and navigate to the local server address (usually `http://localhost:5173`) to verify the app is running.
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── button/      # Reusable button component
+│   └── display/     # Component to show the current count
+├── App.tsx          # Main application logic
+└── main.tsx         # Entry point
 ```
